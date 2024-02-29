@@ -49,7 +49,6 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     public void validate(Cliente entity) throws Exception {
-
     }
 
     @Override

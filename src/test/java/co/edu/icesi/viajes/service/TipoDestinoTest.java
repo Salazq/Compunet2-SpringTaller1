@@ -87,7 +87,7 @@ class TipoDestinoTest {
         tipoDestino.setUsuCreador("CLOPEZ");
         tipoDestino.setEstado("A");
 
-        tipoDestinoService.save(tipoDestino);
+        tipoDestinoService.update(tipoDestino);
 
         Optional<TipoDestino> OptionaltipoDestinoId8 = tipoDestinoService.findByID(8);
         TipoDestino tipoDestinoId8 = OptionaltipoDestinoId8.orElse(null);
