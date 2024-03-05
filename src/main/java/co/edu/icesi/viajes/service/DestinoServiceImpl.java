@@ -56,4 +56,19 @@ public class DestinoServiceImpl implements DestinoService{
     public Long count() {
         return destinoRepository.count();
     }
+
+    @Override
+    public List<Destino> findByCodigoAndEstadoActivo(String codigo) {
+        return destinoRepository.findByCodigoAndEstadoActivo(codigo);
+    }
+
+    @Override
+    public List<Destino> findByIdTide(Integer idTipoDestino) {
+        return destinoRepository.findByIdTide(idTipoDestino);
+    }
+
+    @Override
+    public List<Destino> findAllDestinosActivos() {
+        return destinoRepository.findAllDestinosActivos();
+    }
 }

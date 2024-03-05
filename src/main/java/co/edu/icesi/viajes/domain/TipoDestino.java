@@ -1,12 +1,28 @@
 package co.edu.icesi.viajes.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import co.edu.icesi.viajes.dto.TipoDestinoDTO;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+
+@NamedNativeQueries({
+        @NamedNativeQuery(name= "TipoDestino.consultartTipoDestinoPorEstado" , query="", resultSetMapping = "consultartTipoDestinoPorEstado")
+})
+
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name="consultartTipoDestinoPorEstado",
+                classes= {@ConstructorResult(targetClass = TipoDestinoDTO.class,
+                    columns = {
+                            @ColumnResult(name= "idTide", type = Integer.class), //se usa el nombre de columna asignado en la query
+                            @ColumnResult(name= "codigo", type = String.class),
+                            @ColumnResult(name= "nombre", type = String.class),
+                            @ColumnResult(name= "descripcion", type = String.class),
+
+                    })
+                }),
+})
+
 
 @Data
 @Entity
@@ -40,4 +56,6 @@ public class TipoDestino {
 
     @Column(name="estado")
     private String estado;
+
+
 }

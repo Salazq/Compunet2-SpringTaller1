@@ -1,5 +1,6 @@
 package co.edu.icesi.viajes.service;
 import co.edu.icesi.viajes.domain.TipoDestino;
+import co.edu.icesi.viajes.dto.TipoDestinoDTO;
 import co.edu.icesi.viajes.service.TipoDestinoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,6 +146,40 @@ class TipoDestinoTest {
         Long numeroFilasTipoDestino = tipoDestinoService.count();
 
         assertEquals(numeroFilasTipoDestino, 8);
+    }
+
+    @Test
+    void debeRetornarPorCodigo(){
+
+        String line="";
+        List<TipoDestino> lstTipoDestino = tipoDestinoService.findByCodigo("PLAYA");
+
+        for(TipoDestino tipoDestino: lstTipoDestino){
+            line=tipoDestino.getCodigo() + "-" + tipoDestino.getNombre();
+        }
+
+        assertEquals(line,"PLAYA-PLAYA Y MAR");
+    }
+
+    @Test
+    void debeRetornarPorCodigoYDesino(){
+
+        List<TipoDestino> lstTipoDestino = tipoDestinoService.findByCodigoAndEstado("SORPR","A");
+        assertEquals(lstTipoDestino.size(), 1);
+    }
+
+    @Test
+    void debeRetornarPorEstado(){
+
+        List<TipoDestinoDTO> lstTipoDestino = tipoDestinoService.consultartTipoDestinoPorEstado("A");
+        assertEquals(lstTipoDestino.size(), 8);
+    }
+
+    @Test
+    void debeRetornarOrdenadoPorNombre(){
+
+        List<TipoDestino> lstTipoDestino = tipoDestinoService.findAllOrderByNombre();
+        System.out.println(Arrays.toString(lstTipoDestino.toArray()));
     }
 
 }

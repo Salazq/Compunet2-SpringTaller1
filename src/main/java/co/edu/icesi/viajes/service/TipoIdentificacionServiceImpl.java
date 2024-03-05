@@ -56,4 +56,14 @@ public class TipoIdentificacionServiceImpl implements TipoIdentificacionService{
     public Long count() {
         return tipoIdentificacionRepository.count();
     }
+
+    @Override
+    public List<TipoIdentificacion> findAllByEstadoOrderByNombre(String estado) {
+        return tipoIdentificacionRepository.findAllByEstadoOrderByNombre(estado);
+    }
+
+    @Override
+    public List<TipoIdentificacion> findByCodigoAndEstado(String codigo, String estado) {
+        return tipoIdentificacionRepository.findByCodigoAndEstado(codigo,estado);
+    }
 }

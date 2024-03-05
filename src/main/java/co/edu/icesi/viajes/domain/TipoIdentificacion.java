@@ -20,9 +20,6 @@ public class TipoIdentificacion {
     @Column(name="codigo")
     private String codigo;
 
-    @Column(name="descripcion_solicitud")
-    private String descripcionSolicitud;
-
     @Column(name="nombre")
     private String nombre;
 

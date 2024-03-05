@@ -1,6 +1,7 @@
 package co.edu.icesi.viajes.service;
 
 import co.edu.icesi.viajes.domain.TipoDestino;
+import co.edu.icesi.viajes.dto.TipoDestinoDTO;
 import co.edu.icesi.viajes.repository.TipoDestinoRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -55,4 +56,26 @@ public class TipoDestinoServiceImpl implements TipoDestinoService {
     public Long count() {
         return tipoDestinoRespository.count();
     }
+
+    @Override
+    public List<TipoDestino> findByCodigo(String codigo){
+        return tipoDestinoRespository.findByCodigo(codigo);
+    }
+
+    @Override
+    public List<TipoDestino> findByCodigoAndEstado(String codigo, String estado){
+        return tipoDestinoRespository.findByCodigoAndEstado(codigo,estado);
+    }
+
+    @Override
+    public List<TipoDestinoDTO> consultartTipoDestinoPorEstado(String estado) {
+        return tipoDestinoRespository.consultartTipoDestinoPorEstado(estado);
+    }
+
+    @Override
+    public List<TipoDestino> findAllOrderByNombre() {
+        return tipoDestinoRespository.findAllOrderByNombre();
+    }
+
+
 }
